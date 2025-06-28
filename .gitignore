@@ -1,0 +1,19 @@
+# نظام التشغيل
+Thumbs.db
+desktop.ini
+
+# OneDrive / Windows
+~$*
+*.lnk
+
+# مضغوطات ومستندات غير مشروع
+*.zip
+*.exe
+*.docx
+*.xlsx
+npm-debug.log*
+.DS_Store
+
+# مجلدات التطوير إن وجدت
+node_modules/
+.vscode/

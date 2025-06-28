@@ -1,0 +1,64 @@
+:root {
+  --primary: #6C63FF;
+  --bg:    #F8F8F8;
+  --font:  'Hacen Tunisia Bold', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body {
+  font-family: var(--font);
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+header {
+  position: sticky; top:0;
+  background: var(--bg);
+  backdrop-filter: blur(10px);
+  z-index:1000;
+  padding: 0.5rem 1rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+header .logo img { height:40px; }
+header select {
+  padding: 0.3rem; border-radius:5px;
+  border:1px solid #ccc;
+}
+.hero {
+  min-height: 80vh;
+  background: var(--bg) center/cover no-repeat;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 2rem;
+}
+.hero__content {
+  max-width: 600px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 8px 8px 15px rgba(0,0,0,0.1), -8px -8px 15px #fff;
+}
+.hero h1 {
+  font-size: 2rem; color: var(--primary);
+  margin-bottom:1rem;
+}
+.hero p {
+  margin-bottom:2rem; color:#555;
+}
+.btn {
+  display:inline-block;
+  background: var(--primary);
+  color:#fff;
+  padding:0.7rem 1.5rem;
+  border-radius:8px;
+  text-decoration:none;
+  box-shadow:0 4px 6px rgba(0,0,0,0.1);
+  transition: transform .2s;
+}
+.btn:hover { transform: scale(1.05); }
+footer {
+  text-align:center; padding:2rem 1rem;
+  background: var(--bg); color:#666;
+}
+@media(max-width:768px){
+  .hero__content{padding:1rem;}
+  header{flex-direction:column;gap:0.5rem;}
+}

@@ -2,19 +2,15 @@
 <html lang="" dir="">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>SMSCO | Redirecting…</title>
-
-  <!-- favicon من جذر public -->
+  <!-- favicon → من public -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-  <!-- manifest موحّد -->
+  <!-- manifest → من public -->
   <link rel="manifest" href="/site.webmanifest">
-
-  <!-- CSS موحّد -->
+  <!-- CSS الرئيسي -->
   <link rel="stylesheet" href="/css/styles.css">
-
-  <!-- سكربت كشف اللغة -->
+  <!-- مكتشف اللغة -->
   <script src="/js/lang.js"></script>
 </head>
 <body>
@@ -22,10 +18,11 @@
     <p>يرجى تمكين جافاسكربت لإعادة التوجيه.</p>
   </noscript>
   <script>
-    // اكتشاف لغة المستخدم ثم توجيهه مرة واحدة
-    const lang = detectUserLang(); // 'ar' أو 'en'
+    // اكتشاف لغة المستخدم (ar أو en)
+    const lang = detectUserLang();
     document.documentElement.lang = lang;
     document.documentElement.dir  = lang === 'ar' ? 'rtl' : 'ltr';
+    // إعادة التوجيه للمجلد المناسب
     window.location.replace(`/${lang}/index.html`);
   </script>
 </body>

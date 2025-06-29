@@ -1,24 +1,21 @@
 {
   "version": 2,
   "builds": [
-    { "src": "index.html",              "use": "@vercel/static" },
-    { "src": "robots.txt",              "use": "@vercel/static" },
-    { "src": "sitemap.xml",             "use": "@vercel/static" },
-
-    { "src": "ar/**/*.html",            "use": "@vercel/static" },
-    { "src": "en/**/*.html",            "use": "@vercel/static" },
-    { "src": "platform/**/*.html",      "use": "@vercel/static" },
-
-    { "src": "css/**/*.css",            "use": "@vercel/static" },
-    { "src": "js/**/*.js",              "use": "@vercel/static" },
-
-    { "src": "public/**/*",             "use": "@vercel/static" }
+    { "src": "smsco-website/index.html",         "use": "@vercel/static" },
+    { "src": "smsco-website/robots.txt",         "use": "@vercel/static" },
+    { "src": "smsco-website/sitemap.xml",        "use": "@vercel/static" },
+    { "src": "smsco-website/ar/**/*.html",       "use": "@vercel/static" },
+    { "src": "smsco-website/en/**/*.html",       "use": "@vercel/static" },
+    { "src": "smsco-website/platform/**/*.html", "use": "@vercel/static" },
+    { "src": "smsco-website/css/**/*.css",       "use": "@vercel/static" },
+    { "src": "smsco-website/js/**/*.js",         "use": "@vercel/static" },
+    { "src": "smsco-website/public/**/*",        "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/",                       "dest": "/index.html" },
-    { "src": "/ar/?",                   "dest": "/ar/index.html" },
-    { "src": "/en/?",                   "dest": "/en/index.html" },
-    { "src": "/platform/?",             "dest": "/platform/index.html" },
-    { "src": "/(.*)",                   "dest": "/$1" }
+    { "src": "/",         "dest": "/smsco-website/index.html" },
+    { "src": "/ar/?",     "dest": "/smsco-website/ar/index.html" },
+    { "src": "/en/?",     "dest": "/smsco-website/en/index.html" },
+    { "src": "/platform/?","dest": "/smsco-website/platform/index.html" },
+    { "src": "/(.*)",     "dest": "/smsco-website/$1" }
   ]
 }

@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact Us | SMSCO</title>
 
-  <!-- favicon-ar من جذر public -->
-  <link rel="icon-ar" href="/favicon-ar.ico" type="image/x-icon-ar">
+  <!-- favicon عام -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- روابط بديلة لتحسين الـ SEO -->
+  <link rel="alternate" hreflang="en" href="/en/contact.html">
+  <link rel="alternate" hreflang="ar" href="/ar/contact.html">
 
   <!-- CSS موحّد -->
   <link rel="stylesheet" href="/css/styles.css">
@@ -16,12 +20,14 @@
   <!-- HEADER -->
   <header class="site-header">
     <div class="container nav">
-      <a href="/ar/index.html" class="logo">
-        <img src="/logo-en.png" alt="SMSCO Logo" width="150">
+      <!-- شعار يتغيّر حسب اللغة -->
+      <a id="logo-link" href="/en/index.html" class="logo">
+        <img id="logo-img" src="/logo-en.png" alt="SMSCO Logo" width="150">
       </a>
-      <select id="lang-switcher" aria-label="Language switcher"
-              onchange="window.location.href='/' + this.value + '/contact.html'">
-        <option value="en" selected>English</option>
+
+      <!-- قائمّة اختيار اللغة -->
+      <select id="lang-switcher" aria-label="Language switcher">
+        <option value="en">English</option>
         <option value="ar">العربية</option>
       </select>
     </div>
@@ -29,35 +35,79 @@
 
   <!-- MAIN -->
   <main class="container" style="padding:2rem 0;">
-    <h1>Contact Us</h1>
+    <h1 id="page-title">Contact Us</h1>
     <form action="mailto:info@smsco.com.sa" method="post" enctype="text/plain">
       <label>
-        Name:<br>
+        <span id="label-name">Name:</span><br>
         <input type="text" name="name" required>
       </label><br><br>
       <label>
-        Email:<br>
+        <span id="label-email">Email:</span><br>
         <input type="email" name="email" required>
       </label><br><br>
       <label>
-        Message:<br>
+        <span id="label-message">Message:</span><br>
         <textarea name="message" rows="5" required></textarea>
       </label><br><br>
-      <button type="submit" class="btn">Send</button>
+      <button type="submit" class="btn" id="btn-send">Send</button>
     </form>
   </main>
 
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      © 2025 SMSCO. All rights reserved.
+      <span id="footer-text">© 2025 SMSCO. All rights reserved.</span>
     </div>
   </footer>
 
   <!-- سكريبت تبديل اللغة -->
   <script src="/js/lang.js"></script>
   <script>
-    document.getElementById('lang-switcher').value = 'en';
+    // بمجرد تحميل الصفحة نضبط واجهة اللغة
+    const lang = detectUserLang(); // من lang.js => 'en' أو 'ar'
+
+    // نحول قيمة القائمة
+    const switcher = document.getElementById('lang-switcher');
+    switcher.value = lang;
+
+    // نحدث روابط الشعار والعناصر النصية
+    const logoLink = document.getElementById('logo-link');
+    const logoImg  = document.getElementById('logo-img');
+    const pageTitle = document.getElementById('page-title');
+    const labelName    = document.getElementById('label-name');
+    const labelEmail   = document.getElementById('label-email');
+    const labelMessage = document.getElementById('label-message');
+    const btnSend      = document.getElementById('btn-send');
+    const footerText   = document.getElementById('footer-text');
+
+    if (lang === 'ar') {
+      document.documentElement.lang = 'ar';
+      document.documentElement.dir  = 'rtl';
+      logoLink.href = '/ar/index.html';
+      logoImg.src   = '/logo-ar.png';
+      logoImg.alt   = 'شعار سمسكو';
+
+      // ترجمة النصوص
+      pageTitle.textContent    = 'اتصل بنا';
+      labelName.textContent    = 'الاسم:';
+      labelEmail.textContent   = 'البريد الإلكتروني:';
+      labelMessage.textContent = 'الرسالة:';
+      btnSend.textContent      = 'إرسال';
+      footerText.textContent   = '© 2025 الشركة السعودية للخدمات الإدارية. جميع الحقوق محفوظة.';
+    } else {
+      document.documentElement.lang = 'en';
+      document.documentElement.dir  = 'ltr';
+      logoLink.href = '/en/index.html';
+      logoImg.src   = '/logo-en.png';
+      logoImg.alt   = 'SMSCO Logo';
+
+      // نصوص افتراضية بالإنجليزية (بقاؤها كما هي)
+    }
+
+    // عند تغيير المستخدم للقائمة، ننتقل للصفحة المناسبة
+    switcher.addEventListener('change', () => {
+      window.location.href = `/${switcher.value}/contact.html`;
+    });
   </script>
 </body>
 </html>

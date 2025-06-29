@@ -4,26 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>SMSCO | Redirecting…</title>
-  <!-- favicon → من public -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <!-- manifest → من public -->
-  <link rel="manifest" href="/site.webmanifest">
-  <!-- CSS الرئيسي -->
-  <link rel="stylesheet" href="/css/styles.css">
-  <!-- مكتشف اللغة -->
-  <script src="/js/lang.js"></script>
+  <script src="/js/lang.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = detectUserLang();
+      document.documentElement.lang = lang;
+      document.documentElement.dir  = lang === 'ar' ? 'rtl' : 'ltr';
+      window.location.replace(`/${lang}/index.html`);
+    });
+  </script>
 </head>
 <body>
-  <noscript>
-    <p>يرجى تمكين جافاسكربت لإعادة التوجيه.</p>
-  </noscript>
-  <script>
-    // اكتشاف لغة المستخدم (ar أو en)
-    const lang = detectUserLang();
-    document.documentElement.lang = lang;
-    document.documentElement.dir  = lang === 'ar' ? 'rtl' : 'ltr';
-    // إعادة التوجيه للمجلد المناسب
-    window.location.replace(`/${lang}/index.html`);
-  </script>
+  <noscript>الصفحة تحتاج جافاسكربت لإعادة التوجيه.</noscript>
 </body>
 </html>

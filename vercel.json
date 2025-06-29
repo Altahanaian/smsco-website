@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/",        "dest": "/index.html" },
+    { "src": "/ar/?",    "dest": "/ar/index.html" },
+    { "src": "/en/?",    "dest": "/en/index.html" },
+    { "src": "/platform/?",        "dest": "/platform/index.html" },
+    { "src": "/platform/(.*)",     "dest": "/platform/$1" },
+    { "src": "/css/(.*)",          "dest": "/css/$1" },
+    { "src": "/js/(.*)",           "dest": "/js/$1" },
+    { "src": "/public/(.*)",       "dest": "/public/$1" },
+    { "src": "/(.*)",              "dest": "/$1" }
+  ]
+}

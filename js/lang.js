@@ -1,11 +1,12 @@
-// js/lang.js
-(function() {
-  const stored = localStorage.getItem('smsco-lang');
-  let lang = stored || (navigator.language.startsWith('en') ? 'en' : 'ar');
-  const params = new URLSearchParams(window.location.search);
-  if (['en','ar'].includes(params.get('lang'))) {
-    lang = params.get('lang');
-    localStorage.setItem('smsco-lang', lang);
-  }
-  window.detectUserLang = () => lang;
-})();
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const lang = detectUserLang();             // 'en' أو 'ar'
+    document.documentElement.lang = lang;
+    document.documentElement.dir  = lang === 'ar' ? 'rtl' : 'ltr';
+    // مثال: تبديل شعار ورابط رئيسي
+    const logo = document.getElementById('logo-img');
+    const link = document.getElementById('logo-link');
+    logo.src  = `/logo-${lang}.png`;
+    link.href = `/${lang}/index.html`;
+  });
+</script>

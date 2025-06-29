@@ -1,12 +1,12 @@
-# نظام التشغيل
+# ملفات نظام التشغيل
 Thumbs.db
 desktop.ini
 
-# OneDrive / Windows
+# ملفات OneDrive / Windows المؤقتة
 ~$*
 *.lnk
 
-# مضغوطات ومستندات غير مشروع
+# أرشيفات ومستندات غير جزء من المشروع
 *.zip
 *.exe
 *.docx
@@ -14,9 +14,10 @@ desktop.ini
 npm-debug.log*
 .DS_Store
 
-# مجلدات التطوير
+# مجلدات وملفات التطوير
 node_modules/
 .vscode/
+.idea/
 
 # Vercel
 .vercel/
@@ -27,3 +28,6 @@ node_modules/
 # مجلدات البناء (إن وجدت)
 dist/
 build/
+
+# متغيرات البيئة
+.env

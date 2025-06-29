@@ -4,17 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>SMSCO | Redirecting…</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #fafafa;
+      color: #333;
+    }
+    #message {
+      text-align: center;
+    }
+    #message a { color: #0070f3; text-decoration: none; }
+  </style>
   <script src="/js/lang.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const lang = detectUserLang();
       document.documentElement.lang = lang;
       document.documentElement.dir  = lang === 'ar' ? 'rtl' : 'ltr';
-      window.location.replace(`/${lang}/index.html`);
+
+      // عرض رسالة قصيرة قبل الانتقال
+      const msg = document.getElementById('msg-text');
+      if (lang === 'ar') {
+        msg.textContent = 'جاري إعادة التوجيه إلى الصفحة الرئيسية…';
+      } else {
+        msg.textContent = 'Redirecting to home page…';
+      }
+
+      // بعد 200ms نعيد التوجيه
+      setTimeout(() => {
+        window.location.replace(`/${lang}/index.html`);
+      }, 200);
     });
   </script>
 </head>
 <body>
-  <noscript>الصفحة تحتاج جافاسكربت لإعادة التوجيه.</noscript>
+  <div id="message">
+    <p id="msg-text">Redirecting…</p>
+    <noscript>
+      <p>
+        JavaScript is required for automatic redirect.<br>
+        <a href="/en/index.html">English Home</a> |
+        <a href="/ar/index.html">الصفحة الرئيسية العربية</a>
+      </p>
+    </noscript>
+  </div>
 </body>
 </html>

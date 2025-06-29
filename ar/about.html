@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About Us | SMSCO</title>
 
-  <!-- favicon-ar -->
-  <link rel="icon-ar" href="/favicon-ar.ico" type="image/icon-ar">
+  <!-- favicon عام -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- روابط بديلة لتحسين SEO -->
+  <link rel="alternate" hreflang="en" href="/en/about.html">
+  <link rel="alternate" hreflang="ar" href="/ar/about.html">
 
   <!-- CSS -->
   <link rel="stylesheet" href="/css/styles.css">
@@ -16,12 +20,12 @@
   <!-- HEADER -->
   <header class="site-header">
     <div class="container nav">
-      <a href="/ar/index.html" class="logo">
-        <img src="/logo-ar.png" alt="SMSCO Logo" width="150">
+      <!-- شعار ودليل يتغيّران حسب اللغة -->
+      <a id="logo-link" href="/en/index.html" class="logo">
+        <img id="logo-img" src="/logo-en.png" alt="SMSCO Logo" width="150">
       </a>
-      <select id="lang-switcher" aria-label="Language switcher"
-              onchange="window.location.href='/' + this.value + '/about.html'">
-        <option value="en" selected>English</option>
+      <select id="lang-switcher" aria-label="Language switcher">
+        <option value="en">English</option>
         <option value="ar">العربية</option>
       </select>
     </div>
@@ -29,27 +33,33 @@
 
   <!-- MAIN CONTENT -->
   <main class="container" style="padding:2rem 0;">
-    <h1>About Us</h1>
+    <h1 id="title-about">About Us</h1>
 
-    <h2>Founded</h2>
-    <p>Founded in 2011, Saudi Management Services Company offers AI-powered administrative and consulting solutions.</p>
+    <h2 id="heading-founded">Founded</h2>
+    <p id="text-founded">
+      Founded in 2011, Saudi Management Services Company offers AI-powered administrative and consulting solutions.
+    </p>
 
-    <h2>Vision</h2>
-    <p>To become the leading platform for organizations and individuals, supporting Vision 2030, Expo 2030 &amp; World Cup 2034.</p>
+    <h2 id="heading-vision">Vision</h2>
+    <p id="text-vision">
+      To become the leading platform for organizations and individuals, supporting Vision 2030, Expo 2030 &amp; World Cup 2034.
+    </p>
 
-    <h2>Mission</h2>
-    <p>Delivering integrated and reliable administrative solutions, enhancing operational efficiency and customer satisfaction via SMSCO-AI.</p>
+    <h2 id="heading-mission">Mission</h2>
+    <p id="text-mission">
+      Delivering integrated and reliable administrative solutions, enhancing operational efficiency and customer satisfaction via SMSCO-AI.
+    </p>
 
-    <h2>Values</h2>
-    <ul>
+    <h2 id="heading-values">Values</h2>
+    <ul id="list-values">
       <li><strong>Integrity</strong>: Transparency and honesty in service delivery.</li>
       <li><strong>Quality</strong>: Complying with the highest standards.</li>
       <li><strong>Professionalism</strong>: Following best practices.</li>
       <li><strong>Commitment</strong>: Meeting promises and deadlines.</li>
     </ul>
 
-    <h2>Goals</h2>
-    <ul>
+    <h2 id="heading-goals">Goals</h2>
+    <ul id="list-goals">
       <li>Facilitate company setup of all sizes.</li>
       <li>Attract local and foreign investments.</li>
       <li>Support entrepreneurship.</li>
@@ -60,16 +70,73 @@
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      © 2025 SMSCO. All rights reserved.
+      <span id="footer-text">© 2025 SMSCO. All rights reserved.</span>
     </div>
   </footer>
 
-  <!-- Language switcher script -->
+  <!-- سكريبت تبديل اللغة -->
   <script src="/js/lang.js"></script>
   <script>
-    // ضبط قيمة القائِمة عند التحميل
+    const lang = detectUserLang(); // 'en' أو 'ar'
     const switcher = document.getElementById('lang-switcher');
-    switcher.value = 'en';
+    switcher.value = lang;
+
+    const logoLink   = document.getElementById('logo-link');
+    const logoImg    = document.getElementById('logo-img');
+    const title      = document.getElementById('title-about');
+    const hFounded   = document.getElementById('heading-founded');
+    const tFounded   = document.getElementById('text-founded');
+    const hVision    = document.getElementById('heading-vision');
+    const tVision    = document.getElementById('text-vision');
+    const hMission   = document.getElementById('heading-mission');
+    const tMission   = document.getElementById('text-mission');
+    const hValues    = document.getElementById('heading-values');
+    const valuesList = document.getElementById('list-values');
+    const hGoals     = document.getElementById('heading-goals');
+    const goalsList  = document.getElementById('list-goals');
+    const footerText = document.getElementById('footer-text');
+
+    if (lang === 'ar') {
+      document.documentElement.lang = 'ar';
+      document.documentElement.dir  = 'rtl';
+
+      // الرابط والشعار
+      logoLink.href = '/ar/index.html';
+      logoImg.src   = '/logo-ar.png';
+      logoImg.alt   = 'شعار سمسكو';
+
+      // ترجمة العناوين والنصوص
+      title.textContent    = 'من نحن';
+      hFounded.textContent = 'تأسست';
+      tFounded.textContent = 'تأسست الشركة السعودية للخدمات الإدارية عام 2011، وتقدم حلولاً إدارية واستشارية مدعومة بالذكاء الاصطناعي.';
+      hVision.textContent  = 'الرؤية';
+      tVision.textContent  = 'أن نصبح المنصة الرائدة للمنظمات والأفراد، داعمين رؤية 2030، إكسبو 2030 وكأس العالم 2034.';
+      hMission.textContent = 'الرسالة';
+      tMission.textContent = 'تقديم حلول إدارية متكاملة وموثوقة، تعزز الكفاءة التشغيلية ورضا العملاء عبر منصة SMSCO-AI.';
+
+      hValues.textContent = 'القيم';
+      valuesList.innerHTML = `
+        <li><strong>النزاهة</strong>: الشفافية والصدق في تقديم الخدمة.</li>
+        <li><strong>الجودة</strong>: الالتزام بأعلى المعايير.</li>
+        <li><strong>الاحترافية</strong>: اتباع أفضل الممارسات.</li>
+        <li><strong>الالتزام</strong>: الوفاء بالوعود والمواعيد.</li>
+      `;
+
+      hGoals.textContent = 'الأهداف';
+      goalsList.innerHTML = `
+        <li>تسهيل تأسيس الشركات بجميع أحجامها.</li>
+        <li>جذب الاستثمارات المحلية والأجنبية.</li>
+        <li>دعم ريادة الأعمال.</li>
+        <li>تحقيق أعلى مستوى من رضا العملاء.</li>
+      `;
+
+      footerText.textContent = '© 2025 الشركة السعودية للخدمات الإدارية. جميع الحقوق محفوظة.';
+    }
+
+    // التنقل عند تغيير اللغة
+    switcher.addEventListener('change', () => {
+      window.location.href = `/${switcher.value}/about.html`;
+    });
   </script>
 </body>
 </html>

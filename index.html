@@ -1,57 +1,56 @@
 <!DOCTYPE html>
-<html lang="" dir="">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
+  <title>Redirecting…</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>SMSCO | Redirecting…</title>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <!-- نمط بسيط للمركزية -->
   <style>
     body {
       margin: 0;
-      font-family: sans-serif;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      background: #fafafa;
-      color: #333;
+      font-family: sans-serif;
+      color: #444;
+      background: #f9f9f9;
     }
-    #message {
+    .message {
       text-align: center;
     }
-    #message a { color: #0070f3; text-decoration: none; }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
+  <!-- سكريبت الكشف عن اللغة والتوجيه -->
   <script src="/js/lang.js" defer></script>
-  <script>
+  <script defer>
     document.addEventListener('DOMContentLoaded', () => {
-      const lang = detectUserLang();
+      const lang = detectUserLang(); // 'en' أو 'ar'
       document.documentElement.lang = lang;
-      document.documentElement.dir  = lang === 'ar' ? 'rtl' : 'ltr';
-
-      // عرض رسالة قصيرة قبل الانتقال
-      const msg = document.getElementById('msg-text');
-      if (lang === 'ar') {
-        msg.textContent = 'جاري إعادة التوجيه إلى الصفحة الرئيسية…';
-      } else {
-        msg.textContent = 'Redirecting to home page…';
-      }
-
-      // بعد 200ms نعيد التوجيه
-      setTimeout(() => {
-        window.location.replace(`/${lang}/index.html`);
-      }, 200);
+      document.documentElement.dir  = (lang === 'ar' ? 'rtl' : 'ltr');
+      // اعرض رسالة قصيرة قبل التوجيه
+      const msg = document.getElementById('info');
+      msg.textContent = lang === 'ar'
+        ? 'جاري التحويل إلى الصفحة الرئيسية…'
+        : 'Redirecting to the home page…';
+      // نفّذ التوجيه
+      window.location.replace(`/${lang}/index.html`);
     });
   </script>
 </head>
 <body>
-  <div id="message">
-    <p id="msg-text">Redirecting…</p>
+  <div class="message">
+    <p id="info">Redirecting…</p>
     <noscript>
-      <p>
-        JavaScript is required for automatic redirect.<br>
-        <a href="/en/index.html">English Home</a> |
-        <a href="/ar/index.html">الصفحة الرئيسية العربية</a>
-      </p>
+      <!-- إذا كان الجافاسكربت معطلاً نقترح الرابطين -->
+      <p>JavaScript is disabled. Please choose:</p>
+      <p><a href="/en/index.html">English version</a> | <a href="/ar/index.html">النسخة العربية</a></p>
     </noscript>
   </div>
 </body>

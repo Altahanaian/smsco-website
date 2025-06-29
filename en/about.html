@@ -5,19 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About Us | SMSCO</title>
 
-  <!-- favicon-en من مجلد public -->
-  <link rel="icon-en" href="/favicon-er.ico" type="image/x-icon-en">
+  <!-- favicon عام -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-  <!-- CSS موحّد -->
+  <!-- روابط بديلة لتحسين SEO -->
+  <link rel="alternate" hreflang="en" href="/en/about.html">
+  <link rel="alternate" hreflang="ar" href="/ar/about.html">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
-  <!-- HEADER موحّد -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container nav">
       <a href="/en/index.html" class="logo">
-        <img src="/logo-en.png" alt="SMSCO Logo" width="150">
+        <img src="/logo-en.png" alt="SMSCO Logo" width="150" />
       </a>
       <select id="lang-switcher" aria-label="Language switcher"
               onchange="window.location.href='/' + this.value + '/about.html'">
@@ -27,7 +31,7 @@
     </div>
   </header>
 
-  <!-- المحتوى الرئيسي -->
+  <!-- MAIN CONTENT -->
   <main class="container" style="padding:2rem 0;">
     <h1>About Us</h1>
 
@@ -57,7 +61,7 @@
     </ul>
   </main>
 
-  <!-- FOOTER مشترك -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
       © 2025 SMSCO. All rights reserved.
@@ -67,8 +71,8 @@
   <!-- سكريبت تبديل اللغة -->
   <script src="/js/lang.js"></script>
   <script>
-    // ضبط القيمة الافتراضية لمبدّل اللغة
-    document.getElementById('lang-switcher').value = 'en';
+    const switcher = document.getElementById('lang-switcher');
+    switcher.value = detectUserLang();
   </script>
 </body>
 </html>

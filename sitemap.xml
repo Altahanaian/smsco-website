@@ -1,12 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.smsco.com.sa/ar/index.html</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.smsco.com.sa/ar/about.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.smsco.com.sa/ar/services.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.smsco.com.sa/ar/contact.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.smsco.com.sa/en/index.html</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.smsco.com.sa/en/about.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.smsco.com.sa/en/services.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.smsco.com.sa/en/contact.html</loc><changefreq>monthly</changefreq></url>
-  <url><loc>https://www.smsco.com.sa/platform/index.html</loc><changefreq>monthly</changefreq></url>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <!-- الصفحة الجذرية -->
+  <url>
+    <loc>https://www.smsco.com.sa/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.smsco.com.sa/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.smsco.com.sa/en/index.html"/>
+  </url>
+
+  <!-- صفحات العربية -->
+  <url>
+    <loc>https://www.smsco.com.sa/ar/index.html</loc>
+  </url>
+  <url>
+    <loc>https://www.smsco.com.sa/ar/about.html</loc>
+  </url>
+  <url>
+    <loc>https://www.smsco.com.sa/ar/services.html</loc>
+  </url>
+  <url>
+    <loc>https://www.smsco.com.sa/ar/contact.html</loc>
+  </url>
+
+  <!-- صفحات الإنجليزية -->
+  <url>
+    <loc>https://www.smsco.com.sa/en/index.html</loc>
+  </url>
+  <url>
+    <loc>https://www.smsco.com.sa/en/about.html</loc>
+  </url>
+  <url>
+    <loc>https://www.smsco.com.sa/en/services.html</loc>
+  </url>
+  <url>
+    <loc>https://www.smsco.com.sa/en/contact.html</loc>
+  </url>
+
+  <!-- صفحة المنصة -->
+  <url>
+    <loc>https://www.smsco.com.sa/platform/index.html</loc>
+  </url>
 </urlset>

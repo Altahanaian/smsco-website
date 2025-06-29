@@ -1,12 +1,11 @@
-(function(){
-  const key = 'smsco-lang';
-  let lang = localStorage.getItem(key)
-          || (navigator.language.startsWith('en')?'en':'ar');
-  // إذا تم تمرير ?lang= يعلى الرابط
-  const p = new URLSearchParams(location.search);
-  if (['en','ar'].includes(p.get('lang'))) {
-    lang = p.get('lang');
-    localStorage.setItem(key, lang);
+(function() {
+  const stored = localStorage.getItem('smsco-lang');
+  let lang = stored || (navigator.language.startsWith('en') ? 'en' : 'ar');
+  const params = new URLSearchParams(window.location.search);
+  if (['en','ar'].includes(params.get('lang'))) {
+    lang = params.get('lang');
+    localStorage.setItem('smsco-lang', lang);
   }
+  // expose to global
   window.detectUserLang = () => lang;
 })();

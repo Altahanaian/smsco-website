@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="" dir="">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>SMSCO</title>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="manifest" href="/site.webmanifest">
+  <title>SMSCO | Redirecting…</title>
+  <!-- favicon -->
+  <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
+  <!-- manifest -->
+  <link rel="manifest" href="/public/site.webmanifest">
+  <!-- CSS -->
   <link rel="stylesheet" href="/css/styles.css">
+  <!-- اكتشاف لغة المستخدم -->
   <script src="/js/lang.js"></script>
-  <script>
-    // نحدد لغة الوثيقة ثم نعيد التوجيه
-    document.documentElement.lang = detectUserLang();
-    // نعيد التوجيه إلى المسار المناسب
-    window.location.replace(`/${document.documentElement.lang}/index.html`);
-  </script>
 </head>
 <body>
   <noscript>
-    <p>الصفحة تحتاج جافاسكربت لتنفيذ التوجيه.</p>
+    <p>يرجى تمكين جافاسكربت لإعادة التوجيه.</p>
   </noscript>
+  <script>
+    // نحدد لغة الوثيقة ثم نعيد التوجيه للمسار المناسب
+    const lang = detectUserLang();             // 'ar' أو 'en'
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === 'ar' ? 'rtl' : 'ltr');
+    window.location.replace(`/${lang}/index.html`);
+  </script>
 </body>
 </html>

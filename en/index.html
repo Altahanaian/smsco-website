@@ -4,9 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SMSCO | Home</title>
-  <!-- favicon-en -->
-  <link rel="icon-er" href="public/favicon-er.ico" type="image/x-icon-er">
-  <!-- CSS -->
+
+  <!-- favicon عام -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- روابط بديلة لتحسين الـSEO -->
+  <link rel="alternate" hreflang="en" href="/en/index.html">
+  <link rel="alternate" hreflang="ar" href="/ar/index.html">
+
+  <!-- CSS موحّد -->
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -14,34 +20,56 @@
   <!-- HEADER -->
   <header class="site-header">
     <div class="container nav">
-      <a href="/en/index.html" class="logo">
-        <img src="/logo-en.png" alt="SMSCO Logo">
+      <a id="logo-link" href="/en/index.html" class="logo">
+        <img id="logo-img" src="/logo-en.png" alt="SMSCO Logo" height="40">
       </a>
-      <select id="lang-switcher" aria-label="Language switcher"
-              onchange="window.location.href='/' + this.value + '/index.html'">
-        <option value="en" selected>English</option>
+      <select id="lang-switcher" aria-label="Language switcher">
+        <option value="en">English</option>
         <option value="ar">العربية</option>
       </select>
     </div>
   </header>
 
   <!-- HERO SECTION -->
-  <main class="hero" style="background-image: url('/hero-bg-en-ai.jpg');">
+  <main class="hero" id="hero" style="background-image: url('/hero-bg-en-ai.jpg');">
     <div class="container hero__content">
-      <h1>Saudi Management Services Company</h1>
-      <p>AI-powered solutions aligned with Vision 2030, Expo 2030 &amp; World Cup 2034.</p>
-      <a href="/platform/index.html" class="btn">Start Services</a>
+      <h1 id="hero-title">Saudi Management Services Company</h1>
+      <p id="hero-subtitle">
+        AI-powered solutions aligned with Vision 2030, Expo 2030 &amp; World Cup 2034.
+      </p>
+      <a id="hero-cta" href="/platform/index.html" class="btn">Start Services</a>
     </div>
   </main>
 
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      © 2025 SMSCO. All rights reserved.
+      <span id="footer-text">© 2025 SMSCO. All rights reserved.</span>
     </div>
   </footer>
 
-  <!-- JS -->
+  <!-- سكريبت اللغة -->
   <script src="/js/lang.js"></script>
+  <script>
+    // اكتشاف لغة المستخدم وضبط الوثيقة والشعار
+    const lang = detectUserLang(); // 'en' أو 'ar'
+    document.documentElement.lang = lang;
+    document.documentElement.dir  = lang === 'ar' ? 'rtl' : 'ltr';
+
+    // تعيين قيمة القائمة
+    const switcher = document.getElementById('lang-switcher');
+    switcher.value = lang;
+    switcher.addEventListener('change', () => {
+      window.location.href = `/${switcher.value}/index.html`;
+    });
+
+    // تحديث الشعار والرابط إذا كانت العربية
+    if (lang === 'ar') {
+      document.getElementById('logo-link').href = '/ar/index.html';
+      document.getElementById('logo-img').src  = '/logo-ar.png';
+      document.getElementById('logo-img').alt  = 'شعار SMSCO';
+      // لترجمة المستقبلية يمكنك إضافة هنا...
+    }
+  </script>
 </body>
 </html>

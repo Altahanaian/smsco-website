@@ -14,6 +14,16 @@ desktop.ini
 npm-debug.log*
 .DS_Store
 
-# مجلدات التطوير إن وجدت
+# مجلدات التطوير
 node_modules/
 .vscode/
+
+# Vercel
+.vercel/
+
+# ملفات النسخ الاحتياطي
+*.bak
+
+# مجلدات البناء (إن وجدت)
+dist/
+build/

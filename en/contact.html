@@ -2,32 +2,67 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact Us | SMSCO</title>
+
+  <!-- favicon من الجذر -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- CSS موحّد -->
   <link rel="stylesheet" href="/css/styles.css">
-  <link rel="icon" href="/assets/favicon-en.png" type="image/png">
 </head>
 <body>
-<header>
-  <img src="/assets/logo-en.png" alt="SMSCO Logo" width="150">
-  <nav>
-    <ul>
-      <li><a href="../ar/index.html?lang=ar">العربية</a></li>
-      <li><a href="index.html?lang=en">English</a></li>
-    </ul>
-  </nav>
-</header>
-<main class="container">
-  <h1>Contact Us</h1>
-  <form action="mailto:info@smsco.com.sa" method="post" enctype="text/plain">
-    <label>Name:<br><input type="text" name="name" required></label><br><br>
-    <label>Email:<br><input type="email" name="email" required></label><br><br>
-    <label>Message:<br><textarea name="message" rows="5" required></textarea></label><br><br>
-    <button type="submit" class="button primary">Send</button>
-  </form>
-</main>
-<footer>
-  <p>&copy; 2025 SMSCO. All rights reserved.</p>
-</footer>
+
+  <!-- HEADER مشترك -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="/en/index.html" class="logo">
+        <img src="/logo-en.png" alt="SMSCO Logo" width="150">
+      </a>
+      <select id="lang-switcher" aria-label="Language switcher"
+              onchange="window.location.href='/' + this.value + '/contact.html'">
+        <option value="en" selected>English</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container" style="padding:2rem 0;">
+    <h1>Contact Us</h1>
+    <form action="mailto:info@smsco.com.sa" method="post" enctype="text/plain">
+      <label>
+        Name:<br>
+        <input type="text" name="name" required>
+      </label><br><br>
+
+      <label>
+        Email:<br>
+        <input type="email" name="email" required>
+      </label><br><br>
+
+      <label>
+        Message:<br>
+        <textarea name="message" rows="5" required></textarea>
+      </label><br><br>
+
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </main>
+
+  <!-- FOOTER مشترك -->
+  <footer class="site-footer">
+    <div class="container">
+      © 2025 SMSCO. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- سكريبت اللغة -->
+  <script src="/js/lang.js"></script>
+  <script>
+    // ضبط قيمة المُبدِّل عند التحميل
+    const switcher = document.getElementById('lang-switcher');
+    switcher.value = 'en';
+  </script>
 </body>
 </html>

@@ -2,44 +2,102 @@
 <html lang="" dir="">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SMSCO Platform</title>
-  <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
+  
+  <!-- favicon من جذر public -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <!-- CSS موحّد -->
   <link rel="stylesheet" href="/css/styles.css">
-  <script src="/js/lang.js"></script>
+  <!-- سكريبت الكشف عن اللغة -->
+  <script src="/js/lang.js" defer></script>
 </head>
 <body>
-  <script>
-    // بعد تحميل الصفحة نضبط اللغة
-    const lang = detectUserLang();
-    document.documentElement.lang = lang;
-    document.documentElement.dir = (lang === 'ar' ? 'rtl' : 'ltr');
-  </script>
 
-  <header>
-    <div class="logo">
-      <img src="/public/logo-${detectUserLang()}.png" alt="SMSCO Logo">
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="/" class="logo">
+        <img id="platform-logo" src="" alt="SMSCO Logo" width="150">
+      </a>
+      <select id="lang-switcher" aria-label="Language switcher">
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
+      </select>
     </div>
-    <h1 style="color:var(--primary);">
-      ${detectUserLang()==='ar'
-        ? 'مرحبا بكم في منصتنا الذكية'
-        : 'Welcome to Our Smart Platform'}
-    </h1>
   </header>
 
-  <main class="hero" style="background:#fff;">
-    <div class="hero__content">
-      <p style="max-width:600px;">
-        ${detectUserLang()==='ar'
-          ? 'تقدم SMSCO حلول استشارية وتدريبية ذكية مدعومة بالذكاء الاصطناعي لتطوير مهاراتكم في جميع المجالات.'
-          : 'SMSCO platform offers smart and comprehensive AI-powered consulting and training services to boost your expertise in all fields.'}
-      </p>
-      <a href="#start" class="btn">
-        ${detectUserLang()==='ar' ? 'ابدأ الآن' : 'Get Started'}
-      </a>
+  <!-- MAIN HERO -->
+  <main class="hero" id="platform-hero" style="background-color:#f8f8f8;">
+    <div class="container hero__content neumorphism">
+      <h1 id="platform-title"></h1>
+      <p id="platform-desc"></p>
+      <a id="platform-cta" href="#" class="btn"></a>
     </div>
   </main>
 
-  <footer>© 2025 SMSCO. ${detectUserLang()==='ar' ? 'جميع الحقوق محفوظة.' : 'All rights reserved.'}</footer>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <span id="platform-footer"></span>
+    </div>
+  </footer>
+
+  <!-- script التعبئة الديناميكية -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = detectUserLang(); // 'ar' أو 'en'
+      // ضبط وسم html
+      document.documentElement.lang = lang;
+      document.documentElement.dir  = (lang === 'ar' ? 'rtl' : 'ltr');
+
+      // بيانات المنصة لكل لغة
+      const data = {
+        en: {
+          logo: '/logo-en.png',
+          heroBg: '/hero-bg-en-ai.jpg',
+          title: 'Welcome to SMSCO.AI',
+          desc: 'Our AI-powered platform delivers smart consulting and training solutions tailored to your needs—fast, reliable and scalable.',
+          ctaText: 'Access Platform',
+          ctaHref: 'https://www.smsco.ai',
+          footer: '© 2025 SMSCO.AI – All rights reserved.'
+        },
+        ar: {
+          logo: '/logo-ar.png',
+          heroBg: '/hero-bg-ar-ai.jpg',
+          title: 'مرحبًا بكم في SMSCO.AI',
+          desc: 'منصتنا الذكية المدعومة بالذكاء الاصطناعي تقدّم حلول استشارية وتدريبية مخصّصة لاحتياجاتكم بسرعة وموثوقية وقابلية للتوسع.',
+          ctaText: 'الدخول إلى المنصة',
+          ctaHref: 'https://www.smsco.ai',
+          footer: '© 2025 SMSCO.AI – جميع الحقوق محفوظة.'
+        }
+      };
+
+      const t = data[lang] || data.en;
+      // شعار المنصة
+      document.getElementById('platform-logo').src = t.logo;
+      // خلفية الهيرو
+      document.getElementById('platform-hero').style.backgroundImage = `url('${t.heroBg}')`;
+      // نصوص الهيرو
+      document.getElementById('platform-title').textContent    = t.title;
+      document.getElementById('platform-desc').textContent     = t.desc;
+      const cta = document.getElementById('platform-cta');
+      cta.textContent = t.ctaText;
+      cta.href        = t.ctaHref;
+
+      // الفوتر
+      document.getElementById('platform-footer').textContent = t.footer;
+
+      // مبدّل اللغة
+      const switcher = document.getElementById('lang-switcher');
+      switcher.value = lang;
+      switcher.addEventListener('change', e => {
+        const newLang = e.target.value;
+        localStorage.setItem('smsco-lang', newLang);
+        window.location.href = `/${newLang}/platform/index.html`;
+      });
+    });
+  </script>
+
 </body>
 </html>

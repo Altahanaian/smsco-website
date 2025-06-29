@@ -2,33 +2,55 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Our Services | SMSCO</title>
+
+  <!-- favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <!-- CSS -->
   <link rel="stylesheet" href="/css/styles.css">
-  <link rel="icon" href="/assets/favicon-en.png" type="image/png">
 </head>
 <body>
-<header>
-  <img src="/assets/logo-en.png" alt="SMSCO Logo" width="150">
-  <nav>
-    <ul>
-      <li><a href="../ar/index.html?lang=ar">العربية</a></li>
-      <li><a href="index.html?lang=en">English</a></li>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="/en/index.html" class="logo">
+        <img src="/logo-en.png" alt="SMSCO Logo" width="150">
+      </a>
+      <select id="lang-switcher" aria-label="Language switcher"
+              onchange="window.location.href='/' + this.value + '/services.html'">
+        <option value="en" selected>English</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container" style="padding:2rem 0;">
+    <h1>Our Services</h1>
+    <ul class="services-list">
+      <li><strong>702017</strong>: High-level administrative consulting services</li>
+      <li><strong>702014</strong>: Rehabilitation & restructuring of administrative, financial & operational processes</li>
+      <li><strong>702011</strong>: Management systems certification</li>
+      <li><strong>854955</strong>: E-learning & online training</li>
+      <li><strong>823001</strong>: Exhibitions & conferences management</li>
     </ul>
-  </nav>
-</header>
-<main class="container">
-  <h1>Our Services</h1>
-  <ul>
-    <li>702017: High-level administrative consulting services</li>
-    <li>702014: Rehabilitation & restructuring of admin, financial & operational processes</li>
-    <li>702011: Management systems certification</li>
-    <li>854955: E-learning & online training</li>
-    <li>823001: Exhibitions & conferences management</li>
-  </ul>
-</main>
-<footer>
-  <p>&copy; 2025 SMSCO. All rights reserved.</p>
-</footer>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      © 2025 SMSCO. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JS for language switching -->
+  <script src="/js/lang.js"></script>
+  <script>
+    // ضبط القيمة الافتراضية للقائمة
+    document.getElementById('lang-switcher').value = 'en';
+  </script>
 </body>
 </html>

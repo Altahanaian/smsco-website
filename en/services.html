@@ -6,9 +6,14 @@
 
   <title>Our Services | SMSCO</title>
 
-  <!-- favicon من جذر public -->
-  <link rel="icon-en" href="/favicon-en.ico" type="image/icon-en">
-  <!-- CSS -->
+  <!-- favicon عام -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- روابط بديلة لتحسين SEO -->
+  <link rel="alternate" hreflang="en" href="/en/services.html">
+  <link rel="alternate" hreflang="ar" href="/ar/services.html">
+
+  <!-- CSS مشترك -->
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -16,12 +21,11 @@
   <!-- HEADER -->
   <header class="site-header">
     <div class="container nav">
-      <a href="/en/index.html" class="logo">
-        <img src="/logo-en.png" alt="SMSCO Logo" width="150">
+      <a id="logo-link" href="/en/index.html" class="logo">
+        <img id="logo-img" src="/logo-en.png" alt="SMSCO Logo" width="150">
       </a>
-      <select id="lang-switcher" aria-label="Language switcher"
-              onchange="window.location.href='/' + this.value + '/services.html'">
-        <option value="en" selected>English</option>
+      <select id="lang-switcher" aria-label="Language switcher">
+        <option value="en">English</option>
         <option value="ar">العربية</option>
       </select>
     </div>
@@ -29,28 +33,49 @@
 
   <!-- MAIN CONTENT -->
   <main class="container" style="padding:2rem 0;">
-    <h1>Our Services</h1>
+    <h1 id="services-title">Our Services</h1>
     <ul class="services-list">
       <li><strong>702017</strong>: High-level administrative consulting services</li>
-      <li><strong>702014</strong>: Rehabilitation & restructuring of administrative, financial & operational processes</li>
+      <li><strong>702014</strong>: Rehabilitation &amp; restructuring of administrative, financial &amp; operational processes</li>
       <li><strong>702011</strong>: Management systems certification</li>
-      <li><strong>854955</strong>: E-learning & online training</li>
-      <li><strong>823001</strong>: Exhibitions & conferences management</li>
+      <li><strong>854955</strong>: E-learning &amp; online training</li>
+      <li><strong>823001</strong>: Exhibitions &amp; conferences management</li>
     </ul>
   </main>
 
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      © 2025 SMSCO. All rights reserved.
+      <span id="footer-text">© 2025 SMSCO. All rights reserved.</span>
     </div>
   </footer>
 
-  <!-- JS for language switching -->
+  <!-- سكريبت تبديل اللغة -->
   <script src="/js/lang.js"></script>
   <script>
-    // ضبط القيمة الافتراضية للقائمة
-    document.getElementById('lang-switcher').value = 'en';
+    const lang = detectUserLang();               // 'en' أو 'ar'
+    document.documentElement.lang = lang;
+    document.documentElement.dir  = lang === 'ar' ? 'rtl' : 'ltr';
+
+    // تحديث الشعار والرابط
+    const logoLink = document.getElementById('logo-link');
+    const logoImg  = document.getElementById('logo-img');
+    logoLink.href = `/${lang}/index.html`;
+    logoImg.src   = `/logo-${lang}.png`;
+    logoImg.alt   = lang === 'ar' ? 'شعار سمسكو' : 'SMSCO Logo';
+
+    // ضبط قيمة مُبدّل اللغة
+    const switcher = document.getElementById('lang-switcher');
+    switcher.value = lang;
+    switcher.addEventListener('change', () => {
+      window.location.href = `/${switcher.value}/services.html`;
+    });
+
+    // (اختياري) ترجمة القائمة للعربية إذا كنت تريد الصفحة الثنائية في ملف واحد
+    if (lang === 'ar') {
+      document.getElementById('services-title').textContent = 'خدماتنا';
+      // ويمكنك هنا تعديل عناصر القائمة إلى العربية بنفس الطريقة إذا رغبت
+    }
   </script>
 </body>
 </html>

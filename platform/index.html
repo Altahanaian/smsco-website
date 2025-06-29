@@ -4,20 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SMSCO Platform</title>
-  
-  <!-- favicon من جذر public -->
-  <link rel="icon" href="public/favicon.ico" type="image/x-icon">
+
+  <!-- favicon من جذر الموقع -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
   <!-- CSS موحّد -->
   <link rel="stylesheet" href="/css/styles.css">
-  <!-- سكريبت الكشف عن اللغة -->
+
+  <!-- سكريبت الكشف عن اللغة (يُحمّل مع defer) -->
   <script src="/js/lang.js" defer></script>
 </head>
 <body>
-
   <!-- HEADER -->
   <header class="site-header">
     <div class="container nav">
-      <a href="/" class="logo">
+      <a id="logo-link" href="/" class="logo">
         <img id="platform-logo" src="" alt="SMSCO Logo" width="150">
       </a>
       <select id="lang-switcher" aria-label="Language switcher">
@@ -28,11 +29,11 @@
   </header>
 
   <!-- MAIN HERO -->
-  <main class="hero" id="platform-hero" style="background-color:#f8f8f8;">
+  <main class="hero" id="platform-hero">
     <div class="container hero__content neumorphism">
       <h1 id="platform-title"></h1>
       <p id="platform-desc"></p>
-      <a id="platform-cta" href="#" class="btn"></a>
+      <a id="platform-cta" href="#" class="btn" role="button"></a>
     </div>
   </main>
 
@@ -43,15 +44,16 @@
     </div>
   </footer>
 
-  <!-- script التعبئة الديناميكية -->
+  <!-- تعبئة المحتوى بعد الكشف عن اللغة -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const lang = detectUserLang(); // 'ar' أو 'en'
-      // ضبط وسم html
-      document.documentElement.lang = lang;
-      document.documentElement.dir  = (lang === 'ar' ? 'rtl' : 'ltr');
 
-      // بيانات المنصة لكل لغة
+      // ضبط خصائص الوثيقة
+      document.documentElement.lang = lang;
+      document.documentElement.dir  = lang === 'ar' ? 'rtl' : 'ltr';
+
+      // بيانات المنصة
       const data = {
         en: {
           logo: '/logo-en.png',
@@ -74,13 +76,18 @@
       };
 
       const t = data[lang] || data.en;
+
       // شعار المنصة
       document.getElementById('platform-logo').src = t.logo;
+      document.getElementById('logo-link').href      = `/${lang}/platform/index.html`;
+
       // خلفية الهيرو
-      document.getElementById('platform-hero').style.backgroundImage = `url('${t.heroBg}')`;
+      document.getElementById('platform-hero')
+        .style.backgroundImage = `url('${t.heroBg}')`;
+
       // نصوص الهيرو
-      document.getElementById('platform-title').textContent    = t.title;
-      document.getElementById('platform-desc').textContent     = t.desc;
+      document.getElementById('platform-title').textContent = t.title;
+      document.getElementById('platform-desc').textContent  = t.desc;
       const cta = document.getElementById('platform-cta');
       cta.textContent = t.ctaText;
       cta.href        = t.ctaHref;
@@ -88,7 +95,7 @@
       // الفوتر
       document.getElementById('platform-footer').textContent = t.footer;
 
-      // مبدّل اللغة
+      // مبدِّل اللغة
       const switcher = document.getElementById('lang-switcher');
       switcher.value = lang;
       switcher.addEventListener('change', e => {
@@ -98,6 +105,5 @@
       });
     });
   </script>
-
 </body>
 </html>

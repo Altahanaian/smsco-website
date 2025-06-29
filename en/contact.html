@@ -5,23 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact Us | SMSCO</title>
 
-  <!-- favicon من جذر public -->
-  <link rel="icon-en" href="/favicon-en.ico" type="image/icon-en">
+  <!-- favicon عام -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-  <!-- CSS موحّد -->
+  <!-- روابط بديلة لتحسين SEO -->
+  <link rel="alternate" hreflang="en" href="/en/contact.html">
+  <link rel="alternate" hreflang="ar" href="/ar/contact.html">
+
+  <!-- CSS مشترك -->
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
-  <!-- HEADER مشترك -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container nav">
-      <a href="/en/index.html" class="logo">
-        <img src="/logo-en.png" alt="SMSCO Logo" width="150">
+      <a id="logo-link" href="/en/index.html" class="logo">
+        <img id="logo-img" src="/logo-en.png" alt="SMSCO Logo" width="150">
       </a>
-      <select id="lang-switcher" aria-label="Language switcher"
-              onchange="window.location.href='/' + this.value + '/contact.html'">
-        <option value="en" selected>English</option>
+      <select id="lang-switcher" aria-label="Language switcher">
+        <option value="en">English</option>
         <option value="ar">العربية</option>
       </select>
     </div>
@@ -29,40 +32,64 @@
 
   <!-- MAIN CONTENT -->
   <main class="container" style="padding:2rem 0;">
-    <h1>Contact Us</h1>
+    <h1 id="page-title">Contact Us</h1>
     <form action="mailto:info@smsco.com.sa" method="post" enctype="text/plain">
       <label>
-        Name:<br>
+        <span id="label-name">Name:</span><br>
         <input type="text" name="name" required>
       </label><br><br>
 
       <label>
-        Email:<br>
+        <span id="label-email">Email:</span><br>
         <input type="email" name="email" required>
       </label><br><br>
 
       <label>
-        Message:<br>
+        <span id="label-message">Message:</span><br>
         <textarea name="message" rows="5" required></textarea>
       </label><br><br>
 
-      <button type="submit" class="btn">Send</button>
+      <button type="submit" class="btn" id="btn-send">Send</button>
     </form>
   </main>
 
-  <!-- FOOTER مشترك -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      © 2025 SMSCO. All rights reserved.
+      <span id="footer-text">© 2025 SMSCO. All rights reserved.</span>
     </div>
   </footer>
 
-  <!-- سكريبت اللغة -->
+  <!-- سكريبت تبديل اللغة -->
   <script src="/js/lang.js"></script>
   <script>
-    // ضبط قيمة المُبدِّل عند التحميل
+    const lang = detectUserLang(); // 'en' أو 'ar'
+    document.documentElement.lang = lang;
+    document.documentElement.dir  = (lang === 'ar' ? 'rtl' : 'ltr');
+
+    // تحديث الشعار والروابط
+    const logoLink = document.getElementById('logo-link');
+    const logoImg  = document.getElementById('logo-img');
+    logoLink.href = `/${lang}/index.html`;
+    logoImg.src   = `/logo-${lang}.png`;
+    logoImg.alt   = lang === 'ar' ? 'شعار سمسكو' : 'SMSCO Logo';
+
+    // ضبط قيمة مُبدّل اللغة
     const switcher = document.getElementById('lang-switcher');
-    switcher.value = 'en';
+    switcher.value = lang;
+    switcher.addEventListener('change', () => {
+      window.location.href = `/${switcher.value}/contact.html`;
+    });
+
+    // ترجمة نصوص الصفحة للعربية عند الحاجة
+    if (lang === 'ar') {
+      document.getElementById('page-title').textContent = 'تواصل معنا';
+      document.getElementById('label-name').textContent = 'الاسم:';
+      document.getElementById('label-email').textContent = 'البريد الإلكتروني:';
+      document.getElementById('label-message').textContent = 'الرسالة:';
+      document.getElementById('btn-send').textContent = 'إرسال';
+      document.getElementById('footer-text').textContent = '© 2025 الشركة السعودية للخدمات الإدارية. جميع الحقوق محفوظة.';
+    }
   </script>
 </body>
 </html>

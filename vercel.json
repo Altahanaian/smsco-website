@@ -1,14 +1,21 @@
 {
   "version": 2,
+  "builds": [
+    { "src": "index.html",       "use": "@vercel/static" },
+    { "src": "robots.txt",       "use": "@vercel/static" },
+    { "src": "sitemap.xml",      "use": "@vercel/static" },
+    { "src": "ar/**/*.html",     "use": "@vercel/static" },
+    { "src": "en/**/*.html",     "use": "@vercel/static" },
+    { "src": "platform/**/*.html","use": "@vercel/static" },
+    { "src": "css/**/*.css",     "use": "@vercel/static" },
+    { "src": "js/**/*.js",       "use": "@vercel/static" },
+    { "src": "public/**/*",      "use": "@vercel/static" }
+  ],
   "routes": [
     { "src": "/",        "dest": "/index.html" },
     { "src": "/ar/?",    "dest": "/ar/index.html" },
     { "src": "/en/?",    "dest": "/en/index.html" },
-    { "src": "/platform/?",        "dest": "/platform/index.html" },
-    { "src": "/platform/(.*)",     "dest": "/platform/$1" },
-    { "src": "/css/(.*)",          "dest": "/css/$1" },
-    { "src": "/js/(.*)",           "dest": "/js/$1" },
-    { "src": "/public/(.*)",       "dest": "/public/$1" },
-    { "src": "/(.*)",              "dest": "/$1" }
+    { "src": "/platform/?","dest": "/platform/index.html" },
+    { "src": "/(.*)",    "dest": "/$1" }
   ]
 }

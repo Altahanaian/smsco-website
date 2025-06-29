@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Redirecting…</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <!-- نمط بسيط للمركزية -->
+
+  <!-- نمط لتركيز الرسالة -->
   <style>
     body {
       margin: 0;
@@ -16,30 +17,28 @@
       color: #444;
       background: #f9f9f9;
     }
-    .message {
-      text-align: center;
-    }
-    a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    .message { text-align: center; }
+    a { color: #0066cc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
   </style>
-  <!-- سكريبت الكشف عن اللغة والتوجيه -->
-  <script src="/js/lang.js" defer></script>
-  <script defer>
+
+  <!-- 1) استدعاء lang.js بلا defer -->
+  <script src="/js/lang.js"></script>
+
+  <!-- 2) كود التحويل مباشرة -->
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const lang = detectUserLang(); // 'en' أو 'ar'
+      const lang = detectUserLang(); // ‘en’ أو ‘ar’
       document.documentElement.lang = lang;
       document.documentElement.dir  = (lang === 'ar' ? 'rtl' : 'ltr');
-      // اعرض رسالة قصيرة قبل التوجيه
+
+      // عرض رسالة قبل التوجيه
       const msg = document.getElementById('info');
       msg.textContent = lang === 'ar'
         ? 'جاري التحويل إلى الصفحة الرئيسية…'
         : 'Redirecting to the home page…';
-      // نفّذ التوجيه
+
+      // تنفيذ التحويل
       window.location.replace(`/${lang}/index.html`);
     });
   </script>
@@ -48,9 +47,8 @@
   <div class="message">
     <p id="info">Redirecting…</p>
     <noscript>
-      <!-- إذا كان الجافاسكربت معطلاً نقترح الرابطين -->
-      <p>JavaScript is disabled. Please choose:</p>
-      <p><a href="/en/index.html">English version</a> | <a href="/ar/index.html">النسخة العربية</a></p>
+      <p>JavaScript is disabled. اختر النسخة:</p>
+      <p><a href="/en/index.html">English</a> | <a href="/ar/index.html">العربية</a></p>
     </noscript>
   </div>
 </body>

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>الشركة السعودية للخدمات الإدارية</title>
 
-  <!-- favicon-ar (من الجذر) -->
-  <link rel="icon-ar" href="public/favicon-ar.ico" type="image/icon-ar">
+  <!-- favicon من جذر public -->
+  <link rel="icon" href="/favicon-ar.ico" type="image/x-icon">
 
   <!-- CSS -->
   <link rel="stylesheet" href="/css/styles.css">
@@ -19,7 +19,8 @@
       <a href="/ar/index.html" class="logo">
         <img src="/logo-ar.png" alt="شعار SMSCO" />
       </a>
-      <select id="lang-switcher" aria-label="تبديل اللغة" onchange="window.location.href = '/' + this.value + '/index.html'">
+      <select id="lang-switcher" aria-label="تبديل اللغة"
+              onchange="window.location.href = '/' + this.value + '/index.html'">
         <option value="ar" selected>العربية</option>
         <option value="en">English</option>
       </select>

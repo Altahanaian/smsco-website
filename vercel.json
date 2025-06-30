@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "^/$",           "dest": "/index.html"      },
+    { "src": "^/ar/?$",       "dest": "/ar/index.html"   },
+    { "src": "^/en/?$",       "dest": "/en/index.html"   },
+    { "src": "^/platform/?$", "dest": "/platform/index.html" },
+    { "src": "^/(.*)$",       "dest": "/$1"              }
+  ]
+}
